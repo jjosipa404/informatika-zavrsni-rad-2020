@@ -19,3 +19,19 @@ Skupove podataka odabrane za realizaciju ovog projekta može se pronaći na pove
 U samom početku potrebno je osigurati okruženje koje će omogućiti korištenje do sada navedenih biblioteka i paketa za rad s podacima. U ovom projektu korištena je Conda, sustav za upravljanje paketima i sustav upravljanja okruženjima koji radi na Windowsima, MacOS-u i Linuxu. Conda brzo instalira, pokreće i ažurira pakete. Prvo je u Anaconda Prompt naredbenoj ljusci (eng. Command Shell) naredbom conda create env dash_plotly stvoreno novo okruženje u koje su instalirani potrebni paketi korišteni u aplikaciji i to naredbama: pip install django, pip install django_plotly_dash, pip install plotly. Potom je stvoren novi Django projekt naredbom django-admin startproject django_dash_plotly unutar kojeg su stvorene nove aplikacije naredbama: python manage.py startapp corona i python manage.py startapp users. Ovim je postupkom stvoren Django projekt naziva django_dash_plotly koji sadrži aplikacije corona i users, a njegovim pokretanjem u novostvorenom okruženju dash_plotly, moguće je unutar projekta koristiti instalirane pakete django, django-plotly-dash i plotly (koji sadrži i dash).
 
 Aplikacija se pokreće u Anaconda Prompt-u naredbom python manage.py runserver, uz uvjet da je naredbom conda activate dash_plotly pokrenuto dash_plotly okruženje te je trenutna pozicija naredbenog retka u direktoriju django_dash_plotly aplikacije. Ovime se pokreće Django razvojni poslužitelj (eng. development server) koji omogućuje lokalno pokretanje aplikacije tako da se u web preglednik upiše http://127.0.0.1:8000.
+
+
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/registracija.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/prijava.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/forum.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/forum-objave.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/forum-komentari.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/dashboard-scatter.png)
+
+![GitHub Logo](https://github.com/jjosipa404/informatika-zavrsni-rad-2020/blob/master/screenshots/dashboard-scattermapbox.png)
