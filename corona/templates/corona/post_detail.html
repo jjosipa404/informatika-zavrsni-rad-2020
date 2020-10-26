@@ -1,0 +1,112 @@
+{% extends 'corona/base_forum.html' %}
+
+{% load static %}
+
+{% block content %}
+  
+  
+<div class="row">
+  <div class="col-md-8">
+    <div class="container pt-4 border-0">
+      <div class="card pt-5 bg-transparent text-dark border-0">
+        <h4 class="card-title text-success">
+          {{ post.get_country_display }}
+        </h4>
+        <small>by <strong class="text-primary"> @{{ post.user }}</strong> 
+          {{ post.dateCreated }} 
+        {% if user.is_authenticated  %}
+        {% if post.user == user  %}
+        <a href="{% url 'post-update' post.id %}" class="text-success text-decoration-none font-size-small">Edit</a>
+        <a href="{% url 'post-delete' post.id %}" class="text-danger text-decoration-none">Delete</a><!--  RADI -->
+        {% endif %}
+        {% endif %}
+        </small>
+        <div class="card-text">
+          {{ post.content }}
+        </div>
+      </div>
+    
+      <div class="card-link text-dark text-decoration-none border-0 m-2">
+         {{ object.comments.count }} Comments 
+         <a href="{% url 'post-comment' post.id %}" class="card-link text-primary text-decoration-none ml-2">Comment</a>
+        </div>
+      
+        {% for comment in object.comments.all %}
+        <div class="row">
+          <div class="col-md-2 justify-content-right text-right pr-0 mr-0">
+             <i class="fas fa-user-circle fa-3x h-100"></i>
+        </div>
+        <div class="col-md-10">
+          <div class="card bg-transparent text-dark m-2 border-0">
+            <div class="card-subtitle">
+               <strong class="text-primary">{{ comment.user }}</strong>  
+               <small>{{ comment.dateCreated }}</small>
+               {% if user.is_authenticated  %}
+               {% if comment.user == user  %}
+                  <small>
+                  <a href="{% url 'comment-update' comment.id %}" class="text-success text-decoration-none font-size-small">Edit</a>
+                  <a href="{% url 'comment-delete' comment.id %}" class="text-danger text-decoration-none">Delete</a><!--  RADI -->
+                  </small>
+                {% endif %}
+               {% endif %}
+            </div>
+            <div class="card-text"> {{ comment.content }}</div>
+        </div>
+        </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="container pt-4 border-0">
+      <div class="card pt-5 bg-transparent text-dark border-0">
+        <h4 class="card-title text-success">
+          Latest News For {{ cases_news.location }}
+        </h4>
+        <small> Updated {{ cases_news.updated }} </small>
+      </div>
+      <div class="container m-2">
+        <div class="card p-2 bg-transparent text-white text-center border-0">
+            <h5 class="card-title">  {{ cases_news.location }}</h5>
+                    <div class="card bg-danger mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                      <p class="card-text">  Confirmed : {{ cases_news.confirmed }} </p>
+                    </div>
+                  </div>
+                  <div class="card bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">  Dead : {{ cases_news.dead }}
+                        </p>
+                    </div>
+                </div>
+                <div class="card bg-success mb-3" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <p class="card-text"> Recovered : {{ cases_news.recovered }} </p>
+                  </div>
+                </div>
+        </div>
+    </div>
+
+      
+
+    </div>
+    <div class="container pt-5">
+      <h4>Quarantine Requirements:</h4>
+      <div>
+        {{ travel_quarantine }}
+      </div>
+
+      <h4>Covid19 certification:</h4>
+      <div>
+        {{ travel_certificate }}
+      </div>
+      
+
+    </div>
+ 
+  </div>
+</div>
+
+  
+
+{% endblock %}

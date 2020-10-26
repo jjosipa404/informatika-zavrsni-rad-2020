@@ -1,0 +1,19 @@
+{% extends 'corona/base_world.html' %}
+{% load static %}
+{% load plotly_dash %}
+
+<!-- https://opendata.ecdc.europa.eu/covid19/casedistribution/csv -->
+
+
+
+{% block content %}
+<div class="justify-content-center text-center bg-light text-dark" style="height: 100%;width: 100%; margin-top: 50px;">
+    {% plotly_app name='ScatterMapbox' ratio=0.6 %}
+</div>
+
+<div style="height: 100%;width: 100%;" class="bg-light text-dark">
+    {% plotly_app name='ScatterGeo' ratio=0.6 %}
+</div> 
+
+
+{% endblock %}

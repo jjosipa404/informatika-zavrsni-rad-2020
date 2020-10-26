@@ -1,0 +1,56 @@
+{% extends 'corona/base_forum.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+  <!--
+<div class="jumbotron jumbotron-fluid mt-0 pt-0 bg-dark">
+    <div class="jumbotron-background pt-0">
+      <img src="http://placeimg.com/1000/480/nature?t=1599420008885" class="blur w-100 h-100">
+    </div>
+    <div class="container text-white display-inline">
+      <h1 class="display-4">Hello, world!</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+</div>
+-->
+<div class="jumbotron jumbotron-fluid jumbotron-background w-100 h-50" style="background-image:url(http://placeimg.com/1000/480/nature?t=1599420008885);background-repeat:no-repeat;background-size:cover;">
+  <div class="text-white text-center py-5 px-4" >
+    <div style="background: rgba(29, 29, 29, 0.5)" class="p-4">
+      <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Share experiences during Covid19</strong></h2>
+      <h4 class="mx-5 mb-5">
+        If you are travelling you can ask others on advice from their personal experience.<br>
+        If you just need support share your thoughts with others. <br>
+        Or help others by sharing your own experiences.
+      </h4>
+      {% if user.is_authenticated %}
+        <a class="btn btn-success font-weight-bold pl-5 pr-5"  href="{% url 'post-create' %}"> NEW POST </a>
+        {% else %}
+        <a class="btn btn-success font-weight-bold pl-5 pr-5"  href="{% url 'register' %}"> REGISTER </a>
+        <a class="btn btn-success font-weight-bold pl-5 pr-5" href="{% url 'login' %}"> LOGIN </a>
+        {% endif %}
+    </div>
+  </div>
+</div>  
+  
+<div class="container">
+  {% for post in posts %}
+  <div class="card bg-light text-dark m-2">
+    <div class="card-body">
+      <h5 class="card-title"> <a href="{% url 'post-detail' post.id %}" class="text-decoration-none text-success">{{ post.get_country_display }}</a></h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ post.dateCreated }} <small>by</small> @{{ post.user }}</h6>
+      <p class="card-text">  {{ post.content }} </p>
+      <a href="{% url 'post-detail' post.id %}" class="card-link text-success text-muted text-decoration-none">View comments</a>
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+  
+
+{% endblock %}
+

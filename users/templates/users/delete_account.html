@@ -1,0 +1,17 @@
+{% extends "base_account.html" %}
+{% block content %}
+      <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete user account</legend>
+            <p>Are you sure you want to delete your user profile? This action will delete your account and all your previos posts.</p>
+            {{ form }}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-danger" type="submit">Obriši</button>
+                <a class="btn btn-secondary" style="float:right;" 
+                   href="{% url 'profile' %}">Odustani</a>
+        </div>
+      </form>
+    </div>
+{% endblock content %}

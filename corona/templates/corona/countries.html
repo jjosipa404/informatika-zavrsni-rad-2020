@@ -1,0 +1,35 @@
+{% extends 'corona/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-md-12">
+    <h3 class="text-center">Latest cases info during the pandemic - by country</h3>
+    <div class="card-columns">
+    {% for value in data.data %}
+    <div class="container m-2">
+        <div class="card p-2 bg-dark text-white text-center">
+            <h5 class="card-title">  {{ value.location }}</h5>
+                    <div class="card bg-danger mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                      <p class="card-text">  Confirmed : {{ value.confirmed }} </p>
+                    </div>
+                  </div>
+                  <div class="card bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">  Dead : {{ value.dead }}
+                        </p>
+                    </div>
+                </div>
+                <div class="card bg-success mb-3" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <p class="card-text"> Recovered : {{ value.recovered }} </p>
+                  </div>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

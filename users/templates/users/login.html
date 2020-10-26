@@ -1,0 +1,30 @@
+{% extends 'users/base_account.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-5">
+    <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header bg-dark"><h3 class="text-center font-weight-light my-4 text-light">Login</h3></div>
+        <div class="card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="small mb-1" for="username">Username*</label>
+                    <input class="form-control py-4" id="username" type="text" placeholder="Enter username..." name="username"/>
+                </div>
+                <div class="form-group">
+                    <label class="small mb-1" for="password">Password*</label>
+                    <input class="form-control py-4" id="password" type="password" placeholder="Enter password..." name="password"/>
+                </div>
+                <div class="form-group ">
+                    <input name="login" type="submit" value="Login" class="btn btn-success btn-block" />
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <div class="small"><a href="{% url 'register' %}" class="btn-link text-muted text-success text-decoration-none">Need an account? Sign up!</a></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

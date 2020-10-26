@@ -1,0 +1,45 @@
+{% extends 'users/base_account.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-7">
+    <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header bg-dark"><h3 class="text-center font-weight-light my-4 text-light">Create Account</h3></div>
+        <div class="card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                        <label class="small mb-1">Username<span class="text-red">*</span></label>
+                        {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label class="small mb-1">Email<span class="text-red">*</span></label>
+                        {{ form.email }}
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="small mb-1">Password<span class="text-red">*</span></label>
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="small mb-1">Confirm Password<span class="text-red">*</span></label>
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="form-group mt-4 mb-0">
+                    <input class="btn btn-success btn-block" type="submit" value="Create Account"/>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <div class="small"><a href="{% url 'login' %}" class="btn-link text-muted text-success text-decoration-none">Have an account? Go to login</a></div>
+        </div>
+    </div>
+</div>
+ 
+{% endblock %}
+

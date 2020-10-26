@@ -1,0 +1,12 @@
+{% extends 'corona/base.html' %}
+{% load static %}
+{% load plotly_dash %}
+
+{% block content %}
+
+
+<div style="height: 100%;width: 100%;">
+    {% plotly_app name='Travel' ratio=0.90 %}
+</div> 
+
+{% endblock %}

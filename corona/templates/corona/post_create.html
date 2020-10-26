@@ -1,0 +1,25 @@
+{% extends "corona/base_forum.html" %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+        <form method="POST" class="form" role="form">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">New Post</legend>
+                {% bootstrap_field form.country size='sm' %}
+                {% bootstrap_field form.content size='sm' %}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Post</button>
+                <a href="{% url 'posts' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+
+        </form>
+   
+    </div>
+
+{% endblock content %}
